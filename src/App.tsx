@@ -22,10 +22,10 @@ function App() {
     <React.StrictMode>
       <Provider store={store}>
         <ToastContainer />
-        <BrowserRouter>
+        <BrowserRouter basename={"/chat-app"}>
           <Routes>
             <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/" element={<Login />} />
+            <Route path="" element={<Login />} />
             <Route path="/otp" element={<Otp />} />
             <Route
               path="/chat"
