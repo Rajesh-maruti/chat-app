@@ -39,12 +39,28 @@ const ChatPage = () => {
   }, [dispatch, getMessageStatus, handleUpdateSttausForAllUsers, userList]);
 
   return (
-    <Box maxHeight="100vh" overflow="hidden">
+    <Box
+      height="100%"
+      sx={{
+        position: { xs: "fixed", md: "relative" },
+        top: { xs: "0" },
+        left: { xs: "0" },
+        right: { xs: "0" },
+        bottom: { xs: "0" },
+      }}
+      width="100%"
+      overflow="hidden"
+    >
       <Grid container>
-        <Grid size={{ xs: 12, md: 4 }}>
+        <Grid
+          size={{ xs: 12, md: 4 }}
+          sx={activeUser.value ? { display: { xs: "none", md: "block" } } : {}}
+        >
           <Box
             borderRight="1px solidrgba(240, 240, 240, 0.79)"
             height="100vh"
+            position={{ xs: "fixed", md: "unset" }}
+            width={{ xs: "100%", md: "unset" }}
             sx={{ backgroundColor: "#f0f0f0" }}
           >
             <UserContainer />
@@ -57,7 +73,7 @@ const ChatPage = () => {
           {activeUser.value ? (
             <MessageContainer activeUser={activeUser.value} />
           ) : (
-            <Box height="100vh">
+            <Box height="100vh" sx={{ display: { xs: "none", md: "block" } }}>
               <Box
                 p={0}
                 height="50px"

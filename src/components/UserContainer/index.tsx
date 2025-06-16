@@ -50,8 +50,12 @@ const UserContainer = () => {
 
   const hasData = data?.length > 0;
 
+  useEffect(() => {
+    ;
+  }, []);
+
   return (
-    <Box position="relative" height="100vh" overflow="auto">
+    <Box position="relative" overflow="auto">
       <Box p={2}>
         <Box
           position="sticky"

@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import MessageStatus, { MessageStatusTypes } from "../../shared/MessageStatus";
 import UserAvatar from "../../shared/Avatar/userAvatar";
@@ -107,7 +107,7 @@ const User = (props: { user: UserDataType }) => {
               whiteSpace: "nowrap",
             }}
           >
-            <Box fontWeight="bold">{props.user.name}</Box>
+            <Typography fontWeight="bold">{props.user.name}</Typography>
             <Box
               sx={{
                 overflow: "hidden",

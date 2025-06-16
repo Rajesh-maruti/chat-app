@@ -12,11 +12,14 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Typography } from "@mui/material";
 import useGetOnlineStatus from "../../../hooks/useGetOnlineStatus";
 import { manageUser } from "../../../functions/firebase/manageUser";
+import useSound from "use-sound";
+import sentSound from "../../../sound/messageSent.wav";
 
 const UserInput = () => {
   const chatLength = useSelector(
     (state: RootState) => state.chats.value.length
   );
+  const [play] = useSound(sentSound);
   const [uploadPercentage, setUploadPercentage] = useState<string | null>(null);
   const receiverUser = useSelector(
     (state: RootState) => state.activeUser.value
@@ -30,6 +33,9 @@ const UserInput = () => {
   const { uploadImage, uploadVideo, getDownLoadUrl } = useFileUpload({
     onProgressChange: (progress) => {
       setUploadPercentage(progress.toFixed(2));
+      if (progress === 100) {
+        play();
+      }
     },
     onUploadError: () => {
       setUploadPercentage(null);
@@ -64,6 +70,7 @@ const UserInput = () => {
       );
       manageUser.reloadUserList(`${receiverUser?.phoneNumber}`);
     }
+    play();
     updateChat(message, `${receiverUser?.phoneNumber}`);
   };
 

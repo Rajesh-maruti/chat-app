@@ -5,20 +5,18 @@ import MessageBlock from "./MessageContent";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { updatePreviousMessage } from "../../store/reducerSlices/chatSlice";
-import useScrollIntoView, { ElementEnum } from "../../hooks/useScrollIntoView";
 import { useCallback, useEffect, useRef, useState } from "react";
 import UserInput from "./UserInput";
 import useChat from "../../functions/firebase/useChat";
 import { Unsubscribe } from "firebase/auth";
+import { Virtuoso } from "react-virtuoso";
 
 const MessageContainer = (props: { activeUser?: UserDataType | null }) => {
   const chats = useSelector((state: RootState) => state.chats.value);
   const [isLoadedPreviousMessage, setIsLoadedPreviousMessage] = useState(false);
-  const { ref, scrollIntoView } = useScrollIntoView(ElementEnum.lastElement);
   const detachFunValue = useRef<Unsubscribe | null>(null);
   const activeUser = useSelector((state: RootState) => state.activeUser.value);
   const loggedInUser = useSelector((state: RootState) => state.account.value);
-
   const messageOverview = useSelector(
     (state: RootState) => state.messageStatus.value
   );
@@ -67,12 +65,6 @@ const MessageContainer = (props: { activeUser?: UserDataType | null }) => {
     getChatList();
   }, [activeUser?.phoneNumber, getChatList]);
 
-  useEffect(() => {
-    if (chats.length > 0) {
-      scrollIntoView();
-    }
-  }, [chats, scrollIntoView]);
-
   return (
     <Box>
       {props.activeUser && (
@@ -81,22 +73,29 @@ const MessageContainer = (props: { activeUser?: UserDataType | null }) => {
             <ActiveUserHeader user={props.activeUser} />
           </Box>
           <Box
-            px={6}
-            py={2}
+            px={{ xs: 1, md: 6 }}
+            pt={{ xs: 2, md: 2 }}
             sx={{ border: "2px solid #f5f5f5", borderRadius: "3px" }}
-            ref={ref}
             overflow="auto"
             height="calc(100vh - 198px)"
           >
-            {chats.map((message) => (
-              <MessageBlock
-                chat={message}
-                lastReadId={getLastReadId()}
-                lastDeliveredId={getLastDeliveredId()}
-              />
-            ))}
+            <Virtuoso
+              style={{ height: "calc(100% - 70px)", width: "100%" }}
+              data={chats}
+              increaseViewportBy={20}
+              itemContent={(_index, message) => (
+                <MessageBlock
+                  chat={message}
+                  lastReadId={getLastReadId()}
+                  lastDeliveredId={getLastDeliveredId()}
+                />
+              )}
+              followOutput={true}
+            />
           </Box>
-          <UserInput />
+          <Box position="sticky" bottom={0} zIndex={1}>
+            <UserInput />
+          </Box>
         </>
       )}
     </Box>

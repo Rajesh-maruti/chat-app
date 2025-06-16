@@ -6,14 +6,14 @@ const Input = (
   props: TextFieldProps & {
     onValueChange?: (value: string) => void;
     onEnter?: (value: string) => void;
-    onKeyDown?: (value: React.KeyboardEvent) => void;
+    onKeyDown?: (value: React.KeyboardEvent<HTMLDivElement>) => void;
     disabled?: boolean;
     placeholder?: string;
   }
 ) => {
   const [value, setValue] = useState("");
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     props.onKeyDown?.(e);
     if (e.key === "Enter") {
       e.preventDefault();
@@ -29,7 +29,7 @@ const Input = (
         value={value}
         disabled={props.disabled}
         placeholder={props.placeholder}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(e) => handleKeyDown(e)}
         onChange={(e) => {
           setValue(e.target.value);
           props.onValueChange?.(e.target.value);

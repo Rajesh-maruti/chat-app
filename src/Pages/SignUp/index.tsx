@@ -55,7 +55,12 @@ const SignUp = () => {
 
   return (
     <CardView>
-      <Typography variant="h6" color="secondary" fontWeight="bold">
+      <Typography
+        variant="h5"
+        textAlign="center"
+        color="secondary"
+        fontWeight="bold"
+      >
         Register to Continue.
       </Typography>
       <Input

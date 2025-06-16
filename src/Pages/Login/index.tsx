@@ -40,7 +40,7 @@ const Login = () => {
   };
   return (
     <CardView>
-      <Typography variant="h6" color="secondary" fontWeight="bold">
+      <Typography textAlign="center" variant="h5" color="secondary" fontWeight="bold">
         Login to Continue.
       </Typography>
 

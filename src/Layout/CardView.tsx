@@ -7,7 +7,8 @@ const CardView = (props: { children: ReactNode }) => {
     <Box
       height="100vh"
       display="flex"
-      width="100vw"
+      position='fixed'
+      width="calc(100vw - 64px)"
       justifyContent="center"
       alignItems="center"
       overflow="hidden"
@@ -19,7 +20,7 @@ const CardView = (props: { children: ReactNode }) => {
           justifyContent: "center",
         }}
         boxShadow={4}
-        p={4}
+        p={1}
         maxWidth="400px"
         borderRadius={2}
       >

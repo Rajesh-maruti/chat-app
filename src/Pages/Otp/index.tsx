@@ -44,7 +44,7 @@ const Otp = () => {
   };
   return (
     <CardView>
-      <Typography variant="h6" color="secondary" fontWeight="bold">
+      <Typography textAlign="center" variant="h5" color="secondary" fontWeight="bold">
         Enter OTP
       </Typography>
       <Typography variant="body2" color="text.secondary">

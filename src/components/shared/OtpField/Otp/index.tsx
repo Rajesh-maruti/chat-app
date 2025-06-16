@@ -34,6 +34,7 @@ const Otp = (
         slotProps={{ htmlInput: { maxLength: 1 } }}
         onKeyDown={props.onKeyDown}
         value={props.otp}
+        type="tel"
         {...props}
       />
     </Box>

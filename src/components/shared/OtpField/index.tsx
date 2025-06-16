@@ -8,7 +8,7 @@ const OtpField = (props: { onSubmit: (otp: string) => Promise<void> }) => {
   const [focusedIndex, setFocusedIndex] = useState(0);
   const [loading, setIsLoading] = useState(false);
 
-  const handleKeyDown = (e: React.KeyboardEvent, index: number) => {
+  const onKeyUp = (e: React.KeyboardEvent, index: number) => {
     let temp = [...otps];
     if (e.key === "Backspace") {
       temp[index] = "";
@@ -45,7 +45,7 @@ const OtpField = (props: { onSubmit: (otp: string) => Promise<void> }) => {
             otp={item}
             focus={focusedIndex === index}
             key={index}
-            onKeyDown={(e) => handleKeyDown(e, index)}
+            onKeyUp={(e) => onKeyUp(e, index)}
           />
         ))}
       </Box>
