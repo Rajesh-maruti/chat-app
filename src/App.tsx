@@ -34,7 +34,7 @@ function App() {
               }
             />
             <Route
-              path=""
+              path="/"
               element={
                 <PublicRoute>
                   <Login />
