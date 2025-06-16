@@ -14,6 +14,8 @@ export default function Menu(props: {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     setAnchorEl(event.currentTarget);
   };
   const handleClose = (data: MenuItemType) => {
@@ -42,7 +44,9 @@ export default function Menu(props: {
       >
         {props.menuItems.map((each) => (
           <MenuItem
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
               each.onSelect();
               handleClose(each);
             }}

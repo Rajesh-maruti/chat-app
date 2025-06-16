@@ -11,6 +11,7 @@ import {
   MessageOverviewType,
   setAllMessageStatus,
 } from "../../store/reducerSlices/messageStatusSlice";
+import { updateActiveUser } from "../../store/reducerSlices/activeUserSlice";
 
 const ChatPage = () => {
   const activeUser = useSelector((state: RootState) => state.activeUser);
@@ -37,6 +38,18 @@ const ChatPage = () => {
   useEffect(() => {
     handleUpdateSttausForAllUsers();
   }, [dispatch, getMessageStatus, handleUpdateSttausForAllUsers, userList]);
+
+  useEffect(() => {
+    const handleBack = (e: PopStateEvent) => {
+      e.preventDefault();
+      dispatch(updateActiveUser(null));
+    };
+
+    window.addEventListener("popstate", handleBack);
+    return () => {
+      window.removeEventListener("popstate", handleBack);
+    };
+  }, [dispatch]);
 
   return (
     <Box

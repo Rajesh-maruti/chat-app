@@ -2,8 +2,9 @@ import { JSX, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { useNavigate } from "react-router";
-import { getAuth } from "firebase/auth";
+import { getAuth, UserCredential } from "firebase/auth";
 import toast from "../../functions/toast";
+import { login } from "../../store/reducerSlices/loginSlice";
 
 const PrivateRoute = (props: { Component: JSX.Element }) => {
   const loginData = useSelector((state: RootState) => state.login.value);
@@ -27,19 +28,19 @@ const PrivateRoute = (props: { Component: JSX.Element }) => {
         currentUser
           .getIdToken()
           .then(function (token) {
-            // dispatch(
-            //   login({
-            //     ...loginData,
-            //     user: {
-            //       ...loginData.user,
-            //       lastLoginAt: Date.now(),
-            //     },
-            //     _tokenResponse: {
-            //       ...loginData._tokenResponse,
-            //       idToken: token,
-            //     },
-            //   } satisfies UserCredential)
-            // );
+            dispatch(
+              login({
+                ...loginData,
+                user: {
+                  ...loginData.user,
+                  lastLoginAt: Date.now(),
+                },
+                _tokenResponse: {
+                  ...loginData._tokenResponse,
+                  idToken: token,
+                },
+              } satisfies UserCredential)
+            );
             clearTimeout(timeout);
           })
           .catch(function () {

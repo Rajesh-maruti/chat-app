@@ -41,8 +41,8 @@ const useChat = () => {
     const chatStatusRef = ref(db, `chats-message-status-${combinedUid}`);
     const previousData = lastMessageData.current[combinedUid];
     const status = {
-      delivered: previousData.delivered,
-      read: previousData.read,
+      delivered: previousData?.delivered,
+      read: previousData?.read,
       lastMessagedBy: phone,
       lastMessage: message,
       uid: combinedUid,

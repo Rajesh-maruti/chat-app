@@ -9,9 +9,10 @@ import "./functions/firebase/index";
 import "./functions/firebase/index";
 import { getAuth } from "firebase/auth";
 import { ToastContainer } from "react-toastify";
-import { BrowserRouter, Route, Routes } from "react-router";
+import { HashRouter, Route, Routes } from "react-router";
 import Otp from "./Pages/Otp";
 import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
 
 function App() {
   useEffect(() => {
@@ -22,17 +23,38 @@ function App() {
     <React.StrictMode>
       <Provider store={store}>
         <ToastContainer />
-        <BrowserRouter basename={"/chat-app"}>
+        <HashRouter>
           <Routes>
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="" element={<Login />} />
-            <Route path="/otp" element={<Otp />} />
+            <Route
+              path="/sign-up"
+              element={
+                <PublicRoute>
+                  <SignUp />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path=""
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/otp"
+              element={
+                <PublicRoute>
+                  <Otp />
+                </PublicRoute>
+              }
+            />
             <Route
               path="/chat"
               element={<PrivateRoute Component={<LayoutContainer />} />}
             />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     </React.StrictMode>
   );

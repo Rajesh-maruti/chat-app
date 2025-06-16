@@ -43,7 +43,7 @@ const ReNameOrAddUserToChat = (props: {
   };
 
   return (
-    <Dialog open={props.open}>
+    <Dialog open={props.open} onClick={(e) => e.stopPropagation()}>
       <Box py={2} px={3}>
         <Box>
           <Typography variant="body1" pb={1}>
