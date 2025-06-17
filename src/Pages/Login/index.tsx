@@ -9,6 +9,7 @@ import CardView from "../../Layout/CardView";
 import { manageUser } from "../../functions/firebase/manageUser";
 import toast from "../../functions/toast";
 import { phoneNumberFunctions } from "../../functions/firebase/phoneNumberFunctions";
+import TextRender from "../../components/shared/TextRender";
 
 const Login = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -40,10 +41,7 @@ const Login = () => {
   };
   return (
     <CardView>
-      <Typography textAlign="center" variant="h5" color="secondary" fontWeight="bold">
-        Login to Continue.
-      </Typography>
-
+      <TextRender text="Login to your account!" />
       <PhoneNumberInput value={phoneNumber} onChange={setPhoneNumber} />
       <Box width="100%" py={3}>
         <Button
@@ -59,15 +57,12 @@ const Login = () => {
         </Button>
       </Box>
       <Box>
-        <Typography
+        <TextRender
           variant="body2"
-          color="text.secondary"
-          width="100%"
-          display="flex"
-          justifyContent="center"
-        >
-          OR
-        </Typography>
+          text="Dont have an account?"
+          color="textPrimary"
+          fontWeight="normal"
+        />
         <Typography
           py={1}
           variant="body2"
@@ -78,7 +73,9 @@ const Login = () => {
           fontWeight="bold"
         >
           <Link to="/sign-up">
-            <Button color="secondary">Sign Up</Button>
+            <Button color="secondary">
+              <TextRender variant="body2" text="Sign Up" />
+            </Button>
           </Link>
         </Typography>
       </Box>

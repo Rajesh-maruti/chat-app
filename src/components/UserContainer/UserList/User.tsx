@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import MessageStatus, { MessageStatusTypes } from "../../shared/MessageStatus";
 import UserAvatar from "../../shared/Avatar/userAvatar";
@@ -14,6 +14,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import useSound from "use-sound";
 import incomingSound from "../../../sound/incomingMessage.mp3";
 import UpdateUser from "./UpdateUser";
+import TextRender from "../../shared/TextRender";
 
 const User = (props: { user: UserDataType }) => {
   const dispatch = useDispatch();
@@ -90,6 +91,7 @@ const User = (props: { user: UserDataType }) => {
       key={props.user.name}
       sx={{ cursor: "pointer" }}
       onClick={() => handleActiveUser(props.user)}
+      p={1}
     >
       <Grid container spacing={2} py={2}>
         <Grid size={2}>
@@ -107,15 +109,25 @@ const User = (props: { user: UserDataType }) => {
               whiteSpace: "nowrap",
             }}
           >
-            <Typography fontWeight="bold">{props.user.name}</Typography>
-            <Box
-              sx={{
+            <TextRender
+              color="textPrimary"
+              variant="body2"
+              text={props.user.name}
+              fontWeight="bold"
+              style={{ textAlign: "left" }}
+            />
+
+            <TextRender
+              color="textPrimary"
+              variant="body2"
+              text={getMessage()}
+              fontWeight="normal"
+              style={{
+                textAlign: "left",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
               }}
-            >
-              {getMessage()}
-            </Box>
+            />
           </Box>
         </Grid>
         <Grid size={3}>
@@ -126,7 +138,7 @@ const User = (props: { user: UserDataType }) => {
             <Box
               display="flex"
               alignItems="center"
-              justifyContent="center"
+              justifyContent="right"
               fontSize="small"
               color="gray"
             >

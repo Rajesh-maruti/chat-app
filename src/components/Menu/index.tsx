@@ -23,7 +23,7 @@ export default function Menu(props: {
   };
 
   return (
-    <div>
+    <>
       <Button
         aria-controls={open ? "menu" : undefined}
         aria-haspopup="true"
@@ -55,6 +55,6 @@ export default function Menu(props: {
           </MenuItem>
         ))}
       </MiMenu>
-    </div>
+    </>
   );
 }

@@ -18,7 +18,6 @@ const ChatPage = () => {
   useUpdateOnlineStatus();
   const dispatch = useDispatch();
   const userList = useSelector((state: RootState) => state.userList.value);
-
   const { getMessageStatus } = useMessageStatus();
 
   const handleUpdateSttausForAllUsers = useCallback(async () => {
@@ -42,6 +41,8 @@ const ChatPage = () => {
   useEffect(() => {
     const handleBack = (e: PopStateEvent) => {
       e.preventDefault();
+      e.stopImmediatePropagation();
+      e.stopPropagation();
       dispatch(updateActiveUser(null));
     };
 

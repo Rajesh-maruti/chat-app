@@ -6,7 +6,7 @@ export type MessageStatusTypes = "delivered" | "sent" | "read";
 
 const MessageStatus = ({
   status,
-  iconSize,
+  iconSize = "16px",
 }: {
   status: MessageStatusTypes;
   iconSize?: string;

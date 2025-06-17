@@ -17,13 +17,13 @@ const PhoneNumberInput = (props: PhoneInputProps) => {
         height: "40px",
         fontSize: "18px",
         fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
-        border: "2px solid purple",
+        border: "1px solid purple",
         width: "100%",
         padding: "25px 48px",
       }}
       country="in"
       buttonStyle={{
-        border: "2px solid purple",
+        border: "1px solid purple",
       }}
       {...props}
     />

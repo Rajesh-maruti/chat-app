@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+input::placeholder {
+  color: rgb(68, 67, 67) !important;
+  opacity: 0.5;
+  font-size: 16px;
+  font-family: "roboto", sans-serif;
+}

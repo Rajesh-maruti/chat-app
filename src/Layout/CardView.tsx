@@ -7,22 +7,28 @@ const CardView = (props: { children: ReactNode }) => {
     <Box
       height="100vh"
       display="flex"
-      position='fixed'
+      position="fixed"
       width="calc(100vw - 64px)"
       justifyContent="center"
       alignItems="center"
       overflow="hidden"
       px={4}
+      style={{
+        background:
+          "linear-gradient(135deg, rgb(84 134 210),  rgb(239 120 120))",
+      }}
     >
       <Box
         sx={{
           alignItems: "center",
           justifyContent: "center",
+          backgroundColor: "#fffefe",
         }}
-        boxShadow={4}
+        boxShadow={{ xs: 0, md: 3 }}
         p={1}
         maxWidth="400px"
         borderRadius={2}
+        py={4}
       >
         <CardContent
           sx={{
@@ -31,7 +37,9 @@ const CardView = (props: { children: ReactNode }) => {
             gap: 2,
             alignItems: "center",
           }}
-        >{props.children}</CardContent>
+        >
+          {props.children}
+        </CardContent>
       </Box>
     </Box>
   );

@@ -9,6 +9,7 @@ import toast from "../../functions/toast";
 import { Link, useNavigate } from "react-router";
 import CardView from "../../Layout/CardView";
 import { manageUser } from "../../functions/firebase/manageUser";
+import TextRender from "../../components/shared/TextRender";
 
 const SignUp = () => {
   const [formState, setFormState] = useState({
@@ -55,14 +56,7 @@ const SignUp = () => {
 
   return (
     <CardView>
-      <Typography
-        variant="h5"
-        textAlign="center"
-        color="secondary"
-        fontWeight="bold"
-      >
-        Register to Continue.
-      </Typography>
+      <TextRender text="Register your account!" />
       <Input
         placeholder="Name"
         variant="outlined"
@@ -96,15 +90,7 @@ const SignUp = () => {
         </Button>
       </Box>
       <Box>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          width="100%"
-          display="flex"
-          justifyContent="center"
-        >
-          Already Registered?
-        </Typography>
+        <TextRender text="Already Registered?" variant="body2"  color="textPrimary" fontWeight="normal" />
         <Typography
           py={1}
           variant="body2"
@@ -115,7 +101,9 @@ const SignUp = () => {
           fontWeight="bold"
         >
           <Link to="/">
-            <Button color="secondary">Login</Button>
+            <Button color="secondary">
+              <TextRender text="Login" variant="body2" />
+            </Button>
           </Link>
         </Typography>
       </Box>

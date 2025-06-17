@@ -73,14 +73,13 @@ const MessageContainer = (props: { activeUser?: UserDataType | null }) => {
             <ActiveUserHeader user={props.activeUser} />
           </Box>
           <Box
-            px={{ xs: 1, md: 6 }}
+            px={1}
             pt={{ xs: 2, md: 2 }}
             sx={{ border: "2px solid #f5f5f5", borderRadius: "3px" }}
             overflow="auto"
-            height="calc(100vh - 198px)"
+            height="calc(100vh - 225px)"
           >
             <Virtuoso
-              style={{ height: "calc(100% - 70px)", width: "100%" }}
               data={chats}
               increaseViewportBy={20}
               itemContent={(_index, message) => (

@@ -37,7 +37,7 @@ const Input = (
         variant="outlined"
         sx={{
           width: "100%",
-          border: "2px solid purple",
+          border: "1px solid purple",
           borderRadius: "5px",
           outline: "none",
           "& input": {

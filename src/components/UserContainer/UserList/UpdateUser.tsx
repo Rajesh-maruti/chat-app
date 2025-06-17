@@ -18,7 +18,7 @@ const UpdateUser = (props: { user: UserDataType }) => {
     },
   ];
   return (
-    <Box>
+    <Box width='fit-content' display='flex' alignItems='center'>
       <Menu showMoreIcon menuItems={menuItems} />
       <ReNameOrAddUserToChat
         open={open}

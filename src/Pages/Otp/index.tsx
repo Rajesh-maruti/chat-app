@@ -11,6 +11,7 @@ import { db } from "../../functions/firebase";
 import { toast } from "react-toastify";
 import { updateAccount } from "../../store/reducerSlices/accountSlice";
 import { manageUser } from "../../functions/firebase/manageUser";
+import TextRender from "../../components/shared/TextRender";
 
 const Otp = () => {
   const q = useSearchParams();
@@ -44,9 +45,8 @@ const Otp = () => {
   };
   return (
     <CardView>
-      <Typography textAlign="center" variant="h5" color="secondary" fontWeight="bold">
-        Enter OTP
-      </Typography>
+      <TextRender text="Enter OTP" />
+
       <Typography variant="body2" color="text.secondary">
         We have sent you an OTP to your registered phone number.
       </Typography>
